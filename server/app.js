@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 app.enable('trust proxy');
 
-app.post('/fetchStockData', (req, res) => {
+app.post('/api/fetchStockData', (req, res) => {
     // YOUR CODE GOES HERE, PLEASE DO NOT EDIT ANYTHING OUTSIDE THIS FUNCTION
     res.sendStatus(200);
 });

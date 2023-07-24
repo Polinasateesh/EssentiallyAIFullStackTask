@@ -1,8 +1,6 @@
-import Form from "./Form";
-
 function App() {
 	return (
-		<Form />
+		<h1>Hello world</h1>
 	);
 }
 
