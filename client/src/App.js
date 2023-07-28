@@ -67,7 +67,8 @@ function App() {
       const response = await axios.post('http://localhost:5000/api/fetchStockData', newValues);
       setStockData(response.data);
     } catch (error) {
-        console.error(error.message);
+        console.error('error.message:',error.message);
+        setStockData([])
     }finally{
       setLoading(false);
     }
@@ -84,7 +85,7 @@ function App() {
       <form onSubmit={handleSubmit}>
         <OutlinedInput style={inputStyle} type="text" value={value.symbol} onChange={handleChange} name="symbol"  placeholder='Symbol' required/>
         <OutlinedInput style={inputStyle} type="date" value={value.date} onChange={handleChange} name="date"  required />
-        <Button type="submit" variant='contained' disabled={loading}> {loading?<CircularProgress  size={28}/>:'Submit'}</Button>
+        <Button isrtl={true} type="submit" variant="contained" color="primary" disabled={loading}>{loading ? <CircularProgress size={28} /> : 'Submit'}</Button>
         
       </form>
     </div>
