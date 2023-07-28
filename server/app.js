@@ -29,17 +29,28 @@ app.enable('trust proxy');
 app.post('/api/fetchStockData', async (req, res) => {
   // YOUR CODE GOES HERE, PLEASE DO NOT EDIT ANYTHING OUTSIDE THIS FUNCTION
 
+  // Destructuring symbol and date from the request body
   const { symbol, date } = req.body;
   const apiKey = 'lNpBW19LnRi6vda0Kj5Cj652QS2mNJjn'
   const apiUrl = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${date}/${date}?apiKey=${apiKey}`;
   try {
+
+    // Make a GET request to the Polygon API to fetch stock data
+
     const response = await axios.get(apiUrl);
     const data = response.data;
+
+    // Checking if the response contains data and result
+
     if (!data || !data.results || data.results.length === 0) {
       return res.status(404).json({ error: 'Data not found for the specified stock and date.' });
     }  
+
+    // Extracting the required values
     const { o, h, l, c, v } = data.results[0]
+    // Create an object with keys containing the extracted values
     const tradeStats = { open: o, high: h, low: l, close: c, volume: v }
+    // Send the tradestats object as a JSON response
     res.json([tradeStats]);
   } catch (error) {
     console.error(error);

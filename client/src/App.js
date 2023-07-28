@@ -5,6 +5,7 @@ import { OutlinedInput ,Button,CircularProgress} from '@mui/material';
 import DataTable from 'react-data-table-component';
 import Logo from './Logo.png'
 
+// Add the columns for the data table
 
 const columns = [
   {
@@ -40,6 +41,7 @@ const columns = [
 ];
 
 
+// Define the default  values for the form
 
 const defaultValues = {
   symbol: '',
@@ -47,14 +49,18 @@ const defaultValues = {
 };
 
 function App() {
+
   const [value, setValue] = useState(defaultValues);
   const [stockData, setStockData] = useState([]);
   const [loading, setLoading] = useState(false);
 
 
+  // Function to handle changes in the input fields
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
+
+// Function to handle form submission and fetch stock data
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +70,8 @@ function App() {
         date:value.date
       }
     try {
+      // Make a POST request to fetch stock data
+
       const response = await axios.post('http://localhost:5000/api/fetchStockData', newValues);
       setStockData(response.data);
     } catch (error) {
