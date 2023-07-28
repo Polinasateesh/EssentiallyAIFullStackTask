@@ -29,3 +29,4 @@ The task is to build a webpage to display the trade statistics (Open, High, Low,
 ## Optional tasks
 1. Imagine this is a real world scenario which thousands of users use to get the historic data of a stock for a particular day, how would this product change in order to improve the UX.
 2. What new features would you add in this product to increase it's utility for the end user.
+
